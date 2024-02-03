@@ -1,8 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import "./App.css";
-
 function App() {
   return (
     <div className="min-h-full flex flex-col items-center justify-center">
