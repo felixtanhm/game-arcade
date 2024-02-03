@@ -6,12 +6,15 @@ import RockPaperScissors from "./components/RockPaperScissors";
 import TicTacToe from "./components/TicTacToe";
 import Wordle from "./components/Wordle";
 import BeatThat from "./components/BeatThat";
+import ErrorPage from "./components/ErrorPage";
+import "./reset.css";
 import "./index.css";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App route="/" />,
+    errorElement: <ErrorPage />,
   },
   {
     path: "rockpaperscissors",
