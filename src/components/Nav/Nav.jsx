@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import * as Switch from "@radix-ui/react-switch";
 import { PlayerContext } from "../PlayerProvider";
 
-function Nav({ type }) {
+function Nav({ route = "/" }) {
   const { playerMode, setPlayerMode } = React.useContext(PlayerContext);
-  if (type === "main") {
+  if (route === "/") {
     return (
       <>
         {/* Toggle Input */}

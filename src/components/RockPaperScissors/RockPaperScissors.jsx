@@ -6,16 +6,15 @@ function RockPaperScissors() {
   const [score2, setScore2] = React.useState(0);
   const { playerMode } = React.useContext(PlayerContext);
   const [gameStatus, setGameStatus] = React.useState({
-    player1Selection: null,
-    player2Selection: null,
+    player1Selection: "😶‍🌫️",
+    player2Selection: "😶‍🌫️",
     roundsLeft: 3,
     prevRound: null,
   });
-
   const OPTIONS = {
-    rock: "scissors",
-    paper: "rock",
-    scissors: "paper",
+    "🪨": "✂️",
+    "📄": "🪨",
+    "✂️": "📄",
   };
   const OPTIONS_ARR = Object.keys(OPTIONS);
   console.log(score1);
@@ -37,34 +36,40 @@ function RockPaperScissors() {
     if (player1Choice === player2Choice) {
       const prevGameStatus = { ...gameStatus };
       setGameStatus({
-        ...gameStatus,
+        player1Selection: player1Choice,
+        player2Selection: player2Choice,
         roundsLeft: prevGameStatus.roundsLeft - 1,
         prevRound: "draw",
       });
+      return;
     }
     if (OPTIONS[player1Choice] == player2Choice) {
       const prevGameStatus = { ...gameStatus };
       setScore1(score1 + 1);
       setGameStatus({
-        ...gameStatus,
+        player1Selection: player1Choice,
+        player2Selection: player2Choice,
         roundsLeft: prevGameStatus.roundsLeft - 1,
         prevRound: "player1",
       });
+      return;
     } else {
       const prevGameStatus = { ...gameStatus };
       setScore2(score2 + 1);
       setGameStatus({
-        ...gameStatus,
+        player1Selection: player1Choice,
+        player2Selection: player2Choice,
         roundsLeft: prevGameStatus.roundsLeft - 1,
         prevRound: "player2",
       });
+      return;
     }
     console.log(`Player1: ` + player1Choice);
     console.log(`Player2: ` + player2Choice);
   }
 
   return (
-    <div>
+    <div className="flex flex-col gap-4">
       {/* Header  */}
       <div className="flex flex-col gap-4">
         <h1 className="text-color font-bold text-5xl text-center">🪨 📄 ✂️</h1>
@@ -77,21 +82,38 @@ function RockPaperScissors() {
           </h2>
         </div>
       </div>
+      {/* Score Display */}
+      <div className="flex justify-center gap-8 md:gap-16 py-4">
+        {/* Player 1 */}
+        <div className="flex flex-col items-center gap-2 sm:gap-4 justify-end">
+          <span className="text-5xl sm:text-6xl">
+            {gameStatus.player1Selection}
+          </span>
+          <p className="text-color font-bold text-xl sm:text-2xl">
+            Player 1: {score1}
+          </p>
+        </div>
+        {/* Player 2 */}
+        <div className="flex flex-col items-center gap-2 sm:gap-4 justify-end">
+          <span className="text-5xl sm:text-6xl">
+            {gameStatus.player2Selection}
+          </span>
+          <p className="text-color font-bold text-xl sm:text-2xl">
+            {playerMode === "single" ? "Computer" : "Player 2"}: {score2}
+          </p>
+        </div>
+      </div>
       {/* Option Selection */}
-      <div className="flex gap-2">
+      <div className="flex flex-col md:flex-row gap-2">
         {OPTIONS_ARR.map((option) => {
-          let emoji;
-          if (option === "rock") emoji = "🪨";
-          if (option === "paper") emoji = "📄";
-          if (option === "scissors") emoji = "✂️";
           return (
             <button
               key={option}
               value={option}
-              className="btn-sec-color p-8 rounded-lg border-2 text-6xl"
+              className="btn-sec-color p-4 sm:p-8 rounded-lg border-2 text-4xl sm:text-6xl"
               onClick={handleOptionClick}
             >
-              {emoji}
+              {option}
             </button>
           );
         })}

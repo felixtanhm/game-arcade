@@ -1,11 +1,16 @@
 import React from "react";
 
-export const PlayerContext = React.createContext("single");
+export const PlayerContext = React.createContext();
 
 function PlayerProvider({ children }) {
   const [playerMode, setPlayerMode] = React.useState("single");
   return (
-    <PlayerContext.Provider value={{ playerMode, setPlayerMode }}>
+    <PlayerContext.Provider
+      value={{
+        playerMode,
+        setPlayerMode,
+      }}
+    >
       {children}
     </PlayerContext.Provider>
   );
