@@ -22,7 +22,7 @@ function RockPaperScissors() {
   console.log(gameStatus);
 
   function handleOptionClick(e) {
-    console.log("option clicked");
+    console.log(`${e.target.value} clicked`);
     if (gameStatus.roundsLeft === 0) return;
     executeRound(e.target.value);
   }
@@ -33,8 +33,8 @@ function RockPaperScissors() {
   }
 
   function executeRound(player1Choice, player2Choice) {
-    const comChoice = computerPlay();
-    if (player1Choice === comChoice) {
+    player2Choice = computerPlay();
+    if (player1Choice === player2Choice) {
       const prevGameStatus = { ...gameStatus };
       setGameStatus({
         ...gameStatus,
@@ -42,7 +42,7 @@ function RockPaperScissors() {
         prevRound: "draw",
       });
     }
-    if (OPTIONS[player1Choice] == comChoice) {
+    if (OPTIONS[player1Choice] == player2Choice) {
       const prevGameStatus = { ...gameStatus };
       setScore1(score1 + 1);
       setGameStatus({
@@ -59,6 +59,8 @@ function RockPaperScissors() {
         prevRound: "player2",
       });
     }
+    console.log(`Player1: ` + player1Choice);
+    console.log(`Player2: ` + player2Choice);
   }
 
   return (
