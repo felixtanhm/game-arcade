@@ -17,6 +17,22 @@
   @apply bg-slate-200 text-slate-900 border-slate-500 hover:bg-slate-300 dark:bg-slate-800 dark:text-slate-100 dark:border-slate-500 dark:hover:bg-slate-700;
 }
 
+.toggle {
+  @apply w-10 h-6 bg-slate-200 border-slate-500 hover:bg-slate-300 dark:bg-slate-800 dark:border-slate-500 dark:hover:bg-slate-700 border-2 rounded-full;
+}
+
+.toggle[data-state="checked"] {
+  @apply bg-slate-300 dark:bg-slate-500;
+}
+
+.toggle-thumb {
+  @apply block w-4 h-4 bg-slate-200 rounded-full will-change-transform transition-transform	translate-x-0.5;
+}
+
+.toggle-thumb[data-state="checked"] {
+  @apply translate-x-4;
+}
+
 .footer {
   @apply absolute bottom-0 left-0 flex items-center justify-center gap-3 w-full p-4 text-xl text-slate-900 dark:text-slate-100;
 }

@@ -9,7 +9,7 @@ function ErrorPage() {
       id="error-page"
       className="min-h-full	flex flex-col items-center justify-center gap-4"
     >
-      <h1 className="text-color font-bold text-5xl">Oops!</h1>
+      <h1 className="text-color font-bold text-5xl text-center">Oops!</h1>
       <p className="text-color text-xl text-center">
         Sorry, an unexpected error has occurred. <br />
         {error.statusText || error.message}
