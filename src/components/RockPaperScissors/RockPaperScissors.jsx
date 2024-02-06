@@ -1,5 +1,6 @@
 import React from "react";
 import { PlayerContext } from "../PlayerProvider";
+import DialogTW from "../DialogTW";
 
 function RockPaperScissors() {
   const [score1, setScore1] = React.useState(0);
@@ -33,55 +34,70 @@ function RockPaperScissors() {
 
   function executeRound(player1Choice, player2Choice) {
     player2Choice = computerPlay();
+    console.log(`Player1: ` + player1Choice);
+    console.log(`Player2: ` + player2Choice);
+    const prevGameStatus = { ...gameStatus };
+    const nextGameStatus = {
+      player1Selection: player1Choice,
+      player2Selection: player2Choice,
+      roundsLeft: prevGameStatus.roundsLeft - 1,
+    };
+
     if (player1Choice === player2Choice) {
-      const prevGameStatus = { ...gameStatus };
       setGameStatus({
-        player1Selection: player1Choice,
-        player2Selection: player2Choice,
-        roundsLeft: prevGameStatus.roundsLeft - 1,
+        ...nextGameStatus,
         prevRound: "draw",
       });
       return;
     }
     if (OPTIONS[player1Choice] == player2Choice) {
-      const prevGameStatus = { ...gameStatus };
       setScore1(score1 + 1);
       setGameStatus({
-        player1Selection: player1Choice,
-        player2Selection: player2Choice,
-        roundsLeft: prevGameStatus.roundsLeft - 1,
-        prevRound: "player1",
+        ...nextGameStatus,
+        prevRound: "Player 1",
       });
       return;
     } else {
-      const prevGameStatus = { ...gameStatus };
       setScore2(score2 + 1);
       setGameStatus({
-        player1Selection: player1Choice,
-        player2Selection: player2Choice,
-        roundsLeft: prevGameStatus.roundsLeft - 1,
-        prevRound: "player2",
+        ...nextGameStatus,
+        prevRound: "Computer",
       });
       return;
     }
-    console.log(`Player1: ` + player1Choice);
-    console.log(`Player2: ` + player2Choice);
+  }
+
+  function resetGame() {
+    setGameStatus({
+      player1Selection: "😶‍🌫️",
+      player2Selection: "😶‍🌫️",
+      roundsLeft: 3,
+      prevRound: null,
+    });
+    setScore1(0);
+    setScore2(0);
   }
 
   return (
-    <div className="flex flex-col gap-4">
-      {/* Header  */}
-      <div className="flex flex-col gap-4">
-        <h1 className="text-color font-bold text-5xl text-center">🪨 📄 ✂️</h1>
+    <div className="flex flex-col grow justify-evenly">
+      {/* Helper Text & Announcement */}
+      {!gameStatus.prevRound && (
         <div className="flex flex-col">
           <h2 className="text-color font-bold text-2xl text-center">
-            Rock, Paper, Scissors
+            Pick your choice!
           </h2>
           <h2 className="text-color font-medium text-xl text-center">
             The best of 3 rounds win!
           </h2>
         </div>
-      </div>
+      )}
+      {gameStatus.prevRound && (
+        <h2 className="text-color font-bold text-4xl text-center">
+          {gameStatus.prevRound === "draw"
+            ? "It's a draw!"
+            : `${gameStatus.prevRound} wins!`}
+        </h2>
+      )}
       {/* Score Display */}
       <div className="flex justify-center gap-8 md:gap-16 py-4">
         {/* Player 1 */}
@@ -90,7 +106,7 @@ function RockPaperScissors() {
             {gameStatus.player1Selection}
           </span>
           <p className="text-color font-bold text-xl sm:text-2xl">
-            Player 1: {score1}
+            {playerMode === "single" ? "Player" : "Player 1"}: {score1}
           </p>
         </div>
         {/* Player 2 */}
@@ -110,7 +126,7 @@ function RockPaperScissors() {
             <button
               key={option}
               value={option}
-              className="btn-sec-color p-4 sm:p-8 rounded-lg border-2 text-4xl sm:text-6xl"
+              className="btn-sec-color p-4 sm:p-8 md:p-10 rounded-lg border-2 text-4xl sm:text-6xl md:text-8xl"
               onClick={handleOptionClick}
             >
               {option}
@@ -118,6 +134,15 @@ function RockPaperScissors() {
           );
         })}
       </div>
+      {/* Winner Announcement */}
+      {gameStatus.roundsLeft === 0 && (
+        <DialogTW
+          title={score1 > score2 ? "🎉 You won!" : "👾 Computer won..."}
+          description={"Would you like to play again?"}
+          buttonCTA={"Play Again"}
+          handleClick={resetGame}
+        />
+      )}
     </div>
   );
 }

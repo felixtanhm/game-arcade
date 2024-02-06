@@ -33,8 +33,29 @@
   @apply translate-x-4;
 }
 
+.overlay {
+  @apply fixed inset-0 opacity-70	bg-slate-900;
+  animation: overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal {
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px,
+    hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90vw;
+  max-width: 500px;
+  max-height: 85vh;
+  padding: 25px;
+  animation: contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 .footer {
-  @apply absolute bottom-0 left-0 flex items-center justify-center gap-3 w-full p-4 text-xl text-slate-900 dark:text-slate-100;
+  @apply bottom-0 left-0 flex items-center justify-center gap-3 w-full p-2 md:p-4 text-lg md:text-xl text-slate-900 dark:text-slate-100;
 }
 
 .fa-github {

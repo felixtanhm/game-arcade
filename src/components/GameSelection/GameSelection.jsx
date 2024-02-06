@@ -1,6 +1,7 @@
 import { Outlet, useMatch } from "react-router-dom";
 import PlayerProvider from "../PlayerProvider";
 import Nav from "../Nav";
+import Footer from "../Footer";
 
 function GameSelection() {
   const rockpaperscissors = useMatch("rockpaperscissors");
@@ -12,10 +13,11 @@ function GameSelection() {
 
   return (
     <PlayerProvider>
-      <div className="min-h-full flex flex-col items-center justify-center">
+      <div className="min-h-full flex flex-col items-center justify-between">
         <Nav type="game" route={route.pattern.path} />
         <Outlet />
-      </div>{" "}
+        <Footer />
+      </div>
     </PlayerProvider>
   );
 }
