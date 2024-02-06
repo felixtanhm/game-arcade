@@ -18,11 +18,8 @@ function RockPaperScissors() {
     "✂️": "📄",
   };
   const OPTIONS_ARR = Object.keys(OPTIONS);
-  console.log(score1);
-  console.log(gameStatus);
 
   function handleOptionClick(e) {
-    console.log(`${e.target.value} clicked`);
     if (gameStatus.roundsLeft === 0) return;
     executeRound(e.target.value);
   }
@@ -34,8 +31,6 @@ function RockPaperScissors() {
 
   function executeRound(player1Choice, player2Choice) {
     player2Choice = computerPlay();
-    console.log(`Player1: ` + player1Choice);
-    console.log(`Player2: ` + player2Choice);
     const prevGameStatus = { ...gameStatus };
     const nextGameStatus = {
       player1Selection: player1Choice,
@@ -137,7 +132,14 @@ function RockPaperScissors() {
       {/* Winner Announcement */}
       {gameStatus.roundsLeft === 0 && (
         <DialogTW
-          title={score1 > score2 ? "🎉 You won!" : "👾 Computer won..."}
+          icon={score1 === score2 ? "👐" : score1 > score2 ? "🎉" : "👾"}
+          title={
+            score1 === score2
+              ? "It's a draw!"
+              : score1 > score2
+              ? "You won!"
+              : "Computer won..."
+          }
           description={"Would you like to play again?"}
           buttonCTA={"Play Again"}
           handleClick={resetGame}

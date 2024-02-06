@@ -14,7 +14,7 @@ function GameSelection() {
   return (
     <PlayerProvider>
       <div className="min-h-full flex flex-col items-center justify-between">
-        <Nav type="game" route={route.pattern.path} />
+        <Nav route={route.pattern.path} />
         <Outlet />
         <Footer />
       </div>
