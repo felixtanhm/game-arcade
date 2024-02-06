@@ -1,4 +1,4 @@
-function Button({ style, icon, text, onClick, disabled }) {
+function Button({ style, icon, children, onClick, disabled }) {
   const Tag = icon;
   const iconStyles = icon ? "inline-flex items-center gap-x-1.5" : "";
   const colors = {
@@ -19,7 +19,7 @@ function Button({ style, icon, text, onClick, disabled }) {
         className={`${iconStyles} ${colors[style]} "rounded-md px-3 py-2 text-sm font-semibold shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"`}
       >
         {icon && <Tag className="-ml-0.5 h-5 w-5" aria-hidden="true" />}
-        {text}
+        {children}
       </button>
     </>
   );
