@@ -53,20 +53,21 @@ function BeatThat() {
   }
 
   return (
-    <div className="flex flex-col grow justify-evenly">
+    <div className="flex flex-col grow justify-evenly px-4">
+      {/* Helper Text & Announcement */}
       <div className="flex flex-col">
-        <h2 className="text-color font-bold text-2xl text-center">
+        <h2 className="text-color font-bold text-lg md:text-2xl text-center">
           {score2 ? "Select a dice!" : "Roll your dice!"}
         </h2>
-        <h2 className="text-color font-medium text-xl text-center">
+        <h2 className="text-color font-medium text-md md:text-xl text-center">
           {score2
             ? "The selected dice will be the first number."
             : "Assemble the larger number with your roll results!"}
         </h2>
       </div>
-      <div className="grid grid-cols-2 gap-12 md:gap-24">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-24">
         {/* Player Dice */}
-        <div className="flex flex-col items-center gap-6 sm:gap-10 justify-end">
+        <div className="flex flex-col items-center gap-4 md:gap-10 justify-end">
           <div className="grid grid-cols-2 gap-8 md:gap-12">
             {!loading && (
               <>
@@ -89,10 +90,10 @@ function BeatThat() {
               </>
             )}
           </div>
-          <p className="text-color font-bold text-xl sm:text-2xl">Player</p>
+          <p className="text-color font-bold text-lg md:text-2xl">Player</p>
         </div>
         {/* Computer Dice */}
-        <div className="flex flex-col items-center gap-6 sm:gap-10 justify-end">
+        <div className="flex flex-col items-center gap-4 md:gap-10 justify-end">
           <div className="grid grid-cols-2 gap-8 md:gap-12">
             {!loading && (
               <>
@@ -113,7 +114,7 @@ function BeatThat() {
               </>
             )}
           </div>
-          <p className="text-color font-bold text-xl sm:text-2xl">Computer</p>
+          <p className="text-color font-bold text-lg md:text-2xl">Computer</p>
         </div>
       </div>
       {/* Roll Button */}
