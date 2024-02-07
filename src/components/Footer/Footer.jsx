@@ -7,7 +7,7 @@ function Footer() {
         target="_blank"
         rel="noreferrer"
       >
-        <i className="fab fa-github text-slate-900 dark:text-slate-100"></i>
+        <i className="fab fa-github text-2xl text-slate-900 dark:text-slate-100"></i>
       </a>
     </footer>
   );
