@@ -53,7 +53,17 @@ function BeatThat() {
   }
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col grow justify-evenly">
+      <div className="flex flex-col">
+        <h2 className="text-color font-bold text-2xl text-center">
+          {score2 ? "Select a dice!" : "Roll your dice!"}
+        </h2>
+        <h2 className="text-color font-medium text-xl text-center">
+          {score2
+            ? "The selected dice will be the first number."
+            : "Assemble the larger number with your roll results!"}
+        </h2>
+      </div>
       <div className="grid grid-cols-2 gap-12 md:gap-24">
         {/* Player Dice */}
         <div className="flex flex-col items-center gap-6 sm:gap-10 justify-end">
