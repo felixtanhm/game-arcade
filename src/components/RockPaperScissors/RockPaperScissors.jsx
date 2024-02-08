@@ -2,6 +2,7 @@ import React from "react";
 import { PlayerContext } from "../PlayerProvider";
 import DialogTW from "../DialogTW";
 import { randomInt } from "../../utils/helperFunctions";
+import { OPTIONS, OPTIONS_ARR } from "../../utils/constants";
 
 function RockPaperScissors() {
   const [score1, setScore1] = React.useState(0);
@@ -13,12 +14,6 @@ function RockPaperScissors() {
     roundsLeft: 3,
     prevRound: null,
   });
-  const OPTIONS = {
-    "🪨": "✂️",
-    "📄": "🪨",
-    "✂️": "📄",
-  };
-  const OPTIONS_ARR = Object.keys(OPTIONS);
 
   function handleOptionClick(e) {
     if (gameStatus.roundsLeft === 0) return;
