@@ -117,7 +117,7 @@ function RockPaperScissors() {
             <button
               key={option}
               value={option}
-              className="btn-sec-color p-4 sm:p-8 md:p-10 rounded-lg border-2 text-4xl sm:text-6xl md:text-8xl"
+              className="bg-white text-gray-900 hover:bg-gray-50 dark:bg-white/10 dark:text-white dark:hover:bg-white/20 p-4 sm:p-8 md:p-10 rounded-lg text-4xl sm:text-6xl md:text-8xl"
               onClick={handleOptionClick}
             >
               {option}

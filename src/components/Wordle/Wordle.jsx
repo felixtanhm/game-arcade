@@ -1,21 +1,26 @@
 import React from "react";
 import GuessDisplay from "./GuessDisplay";
 import GuessForm from "./GuessForm";
-import { NUM_OF_GUESSES, WORDS } from "../../utils/constants";
-import { randomInt, range } from "../../utils/helperFunctions";
+import { WORDS } from "../../utils/constants";
+import { randomInt } from "../../utils/helperFunctions";
 
 function Wordle() {
   const [answer, setAnswer] = React.useState(
     WORDS[randomInt(WORDS.length, "floor")]
   );
-  const [guessList, setGuessList] = React.useState(["HELLO", "WORLD"]);
-
+  const [guessList, setGuessList] = React.useState([]);
   console.log(answer);
-  console.log(guessList);
+
+  function updateGuessList(guess) {
+    const nextGuessList = [...guessList];
+    nextGuessList.push(guess);
+    setGuessList(nextGuessList);
+  }
+
   return (
     <div>
-      <GuessDisplay guessList={guessList} />
-      <GuessForm updateGuessList={setGuessList} />
+      <GuessDisplay data={guessList} />
+      <GuessForm updateGuessList={updateGuessList} />
     </div>
   );
 }

@@ -1,11 +1,7 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import Button from "../Button";
-import * as Switch from "@radix-ui/react-switch";
-import { PlayerContext } from "../PlayerProvider";
 
 function Nav({ route = "/" }) {
-  const { playerMode, setPlayerMode } = React.useContext(PlayerContext);
   const games = [
     {
       emoji: "🪨📄✂️",
@@ -19,43 +15,20 @@ function Nav({ route = "/" }) {
   if (route === "/") {
     return (
       <>
-        <div className="sm:size-3/5 md:size-2/4">
-          {/* Toggle Input */}
-          <div className="flex justify-center">
-            <label
-              className="text-color font-semibold pr-4"
-              htmlFor="player-mode"
-            >
-              MultiPlayer Mode
-            </label>
-            <Switch.Root
-              className="toggle"
-              id="player-mode"
-              checked={playerMode === "multi"}
-              onCheckedChange={() => {
-                playerMode === "single"
-                  ? setPlayerMode("multi")
-                  : setPlayerMode("single");
-              }}
-            >
-              <Switch.Thumb className="toggle-thumb" />
-            </Switch.Root>
-          </div>
-          {/* Nav Options */}
-          <div className="grid grid-cols-2 grid-rows-2 gap-2 p-2">
-            {games.map((game) => {
-              return (
-                <Link
-                  key={game.route}
-                  className="btn-sec-color w-full h-48 p-4 border-solid border-2 rounded-lg flex flex-col gap-1 items-center justify-center text-center"
-                  to={game.route}
-                >
-                  <span>{game.emoji}</span>
-                  <span className="font-semibold">{game.title}</span>
-                </Link>
-              );
-            })}
-          </div>
+        {/* Nav Options */}
+        <div className="grid grid-cols-2 grid-rows-2 gap-2 p-2 sm:gap-4">
+          {games.map((game) => {
+            return (
+              <Link
+                key={game.route}
+                className="bg-white text-gray-900 hover:bg-gray-50 dark:bg-white/10 dark:text-white dark:hover:bg-white/20 w-full h-48 p-4 sm:p-8 rounded-lg flex flex-col gap-1 items-center justify-center text-center"
+                to={game.route}
+              >
+                <span>{game.emoji}</span>
+                <span className="font-semibold">{game.title}</span>
+              </Link>
+            );
+          })}
         </div>
       </>
     );
