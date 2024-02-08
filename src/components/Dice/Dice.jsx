@@ -1,9 +1,8 @@
+import { range } from "../../utils/helperFunctions";
+
 function Dice({ value, showValue, rotate, onClick }) {
-  let valueArr = [];
   const dotRender = value == 5 ? 9 : value;
-  for (let i = 0; i < dotRender; i++) {
-    valueArr.push(i);
-  }
+  const valueArr = range(dotRender);
 
   const gridCols =
     value == 1 ? "grid-cols-1" : value % 2 == 0 ? "grid-cols-2" : "grid-cols-3";
