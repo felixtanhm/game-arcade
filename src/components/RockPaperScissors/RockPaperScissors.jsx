@@ -1,6 +1,7 @@
 import React from "react";
 import { PlayerContext } from "../PlayerProvider";
 import DialogTW from "../DialogTW";
+import { randomInt } from "../../utils/helperFunctions";
 
 function RockPaperScissors() {
   const [score1, setScore1] = React.useState(0);
@@ -25,7 +26,7 @@ function RockPaperScissors() {
   }
 
   function computerPlay() {
-    let int = Math.floor(Math.random() * 3);
+    let int = randomInt(3, "floor");
     return OPTIONS_ARR[int];
   }
 

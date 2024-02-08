@@ -1,7 +1,7 @@
 function Dice({ value, showValue, rotate, onClick }) {
   let valueArr = [];
-  if (value == 5) value = 9;
-  for (let i = 0; i < value; i++) {
+  const dotRender = value == 5 ? 9 : value;
+  for (let i = 0; i < dotRender; i++) {
     valueArr.push(i);
   }
 
@@ -22,7 +22,7 @@ function Dice({ value, showValue, rotate, onClick }) {
         <span
           className={`${tiltClass} grid ${gridCols} justify-items-center items-center text-center w-full h-full`}
         >
-          {value !== 9 &&
+          {dotRender !== 9 &&
             valueArr.map((value) => {
               return (
                 <span
@@ -31,7 +31,7 @@ function Dice({ value, showValue, rotate, onClick }) {
                 ></span>
               );
             })}
-          {value === 9 &&
+          {dotRender === 9 &&
             valueArr.map((value, index) => {
               return index % 2 == 0 ? (
                 <span

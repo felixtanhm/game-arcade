@@ -2,6 +2,7 @@ import React from "react";
 import Button from "../Button";
 import Dice from "../Dice";
 import DialogTW from "../DialogTW";
+import { randomInt } from "../../utils/helperFunctions";
 
 function BeatThat() {
   const [loading, setLoading] = React.useState(false);
@@ -31,7 +32,7 @@ function BeatThat() {
   }, [loading]);
 
   function rollDice() {
-    const num = Math.ceil(Math.random() * 6);
+    const num = randomInt(6, "ceil");
     return String(num);
   }
 
