@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 
 function Button({
   variant,
+  type = "button",
   buttonIcon,
   onClick,
   disabled,
@@ -20,7 +21,7 @@ function Button({
     ghost: "text-indigo-600 hover:bg-indigo-50 dark:hover:bg-indigo-100",
   };
 
-  return href ? (
+  return type === "link" ? (
     <Link
       className={`${colors[variant]} rounded-md flex flex-col items-center justify-center px-3 py-2 text-sm font-semibold shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${customStyles}`}
       to={href}
@@ -29,7 +30,7 @@ function Button({
     </Link>
   ) : (
     <button
-      type="button"
+      type={type}
       onClick={onClick}
       disabled={disabled}
       className={`${iconStyles} ${colors[variant]} rounded-md px-3 py-2 text-sm font-semibold shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${customStyles}`}

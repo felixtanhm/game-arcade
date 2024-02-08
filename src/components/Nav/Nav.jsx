@@ -69,7 +69,12 @@ function Nav({ route = "/" }) {
           <span className="font-bold text-2xl">{game.emoji}</span>
           <p className="font-bold text-xl sm:text-2xl">{game.title}</p>
         </div>
-        <Button variant="secondary" href="/" customStyles={"w-fit	py-4"}>
+        <Button
+          variant="secondary"
+          type="link"
+          href="/"
+          customStyles={"w-fit	py-4"}
+        >
           🕹️ Back to Selection
         </Button>
       </div>
