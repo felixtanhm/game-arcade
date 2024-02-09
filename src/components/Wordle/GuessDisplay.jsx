@@ -6,7 +6,7 @@ function GuessDisplay({ data }) {
   const rows = range(NUM_OF_GUESSES);
 
   return (
-    <div id="guessDisplay" className="p-2 grid gap-1">
+    <div className="p-2 grid gap-1">
       {rows.map((row) => {
         return <GuessRow key={row} guess={data[row]} />;
       })}
