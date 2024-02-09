@@ -6,9 +6,9 @@ In these few months, every project that I've done was with some form of guidance
 
 It also serves as an experiment for me to figure out how I would like to tackle future self-initiated projects. This has been a fun project, and I hope you have a bit of fun with these simple games. 🙂
 
-[Live Demo](https://game-arcade.pages.dev/) ✨
+<a href="https://game-arcade.pages.dev/" target="_blank" rel="noreferrer">Live Demo</a> ✨
 
-![lifeinvader-demo](./src/assets/game-arcade.gif)
+![game-arcade-demo](./src/assets/game-arcade.gif)
 
 ### Technologies
 
@@ -17,6 +17,7 @@ It also serves as an experiment for me to figure out how I would like to tackle 
 - Tailwind CSS
 - Headless UI
 - Vite
+- Cloudflare
 
 ### Future Development
 
