@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "../Button";
-import Dice from "../Dice";
+import Dice from "./Dice";
 import DialogTW from "../DialogTW";
 import { randomInt } from "../../utils/helperFunctions";
 

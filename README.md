@@ -6,9 +6,9 @@ In these few months, every project that I've done was with some form of guidance
 
 It also serves as an experiment for me to figure out how I would like to tackle future self-initiated projects. This has been a fun project, and I hope you have a bit of fun with these simple games. 🙂
 
-[Live Demo](https://felixtanhm.github.io/odin-etch-a-sketch) ✨
+[Live Demo](https://game-arcade.pages.dev/) ✨
 
-![lifeinvader-demo](https://user-images.githubusercontent.com/24649589/122633458-eecb5000-d12c-11eb-9674-3ec9e8f4c864.gif)
+![lifeinvader-demo](./src/assets/game-arcade.gif)
 
 ### Technologies
 
