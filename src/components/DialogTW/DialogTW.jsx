@@ -64,7 +64,7 @@ export default function DialogTW({
                 </div>
                 {/* Modal CTA */}
                 <div className="mt-5 flex flex-col gap-2 sm:mt-6 sm:grid sm:grid-flow-row-dense sm:grid-cols-2 sm:gap-3">
-                  <Button variant="secondary" type="link" href="/">
+                  <Button variant="soft" type="link" href="/">
                     🕹️ Back to Selection
                   </Button>
                   <Button

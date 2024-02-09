@@ -8,9 +8,9 @@ function GuessRow({ guess }) {
       <div id="guessRow" className="grid grid-cols-5 gap-1">
         {letters.map((char) => {
           const statusColor = {
-            correct: "dark:bg-emerald-600/50",
-            incorrect: "dark:bg-white/20",
-            misplaced: "dark:bg-amber-400/50",
+            correct: "bg-emerald-400 dark:bg-emerald-600/50",
+            incorrect: "bg-slate-300 dark:bg-white/20",
+            misplaced: "bg-amber-400 dark:bg-amber-400/50",
           };
           return (
             <span

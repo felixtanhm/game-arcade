@@ -21,7 +21,7 @@ function Nav({ route = "/" }) {
             return (
               <Link
                 key={game.route}
-                className="bg-white text-gray-900 hover:bg-gray-50 dark:bg-white/10 dark:text-white dark:hover:bg-white/20 w-full h-48 p-4 sm:p-8 rounded-lg flex flex-col gap-1 items-center justify-center text-center"
+                className="bg-indigo-100 text-slate-900 hover:bg-slate-50 dark:bg-white/10 dark:text-white dark:hover:bg-white/20 w-full h-48 p-4 sm:p-8 rounded-lg flex flex-col gap-1 items-center justify-center text-center"
                 to={game.route}
               >
                 <span>{game.emoji}</span>
@@ -42,12 +42,7 @@ function Nav({ route = "/" }) {
           <span className="font-bold text-2xl">{game.emoji}</span>
           <p className="font-bold text-xl sm:text-2xl">{game.title}</p>
         </div>
-        <Button
-          variant="secondary"
-          type="link"
-          href="/"
-          customStyles={"w-fit	py-4"}
-        >
+        <Button variant="soft" type="link" href="/" customStyles={"w-fit	py-4"}>
           🕹️ Back to Selection
         </Button>
       </div>

@@ -11,7 +11,7 @@ function Dice({ value, showValue, rotate, onClick }) {
 
   return (
     <button
-      className={`${rotateClass} bg-slate-100 rounded-lg p-3 flex flex-col h-20 w-20 md:h-28 md:w-28`}
+      className={`${rotateClass} bg-white border border-slate-900 dark:bg-slate-100 dark:border-slate-100 rounded-lg p-3 flex flex-col h-20 w-20 md:h-28 md:w-28`}
       onClick={() => {
         onClick(value);
       }}
