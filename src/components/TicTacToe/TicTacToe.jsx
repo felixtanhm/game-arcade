@@ -1,6 +1,6 @@
 import React from "react";
 import DialogTW from "../DialogTW";
-import { range } from "../../utils/helperFunctions";
+import { range, randomInt } from "../../utils/helperFunctions";
 import { WIN_CONDITIONS } from "../../utils/constants";
 
 function TicTacToe() {
@@ -15,16 +15,26 @@ function TicTacToe() {
     if (draw) setGameWinner("draw");
   }, [gridState, gameWinner]);
 
+  // Computer Play
+  React.useEffect(() => {
+    if (playerTurn) return;
+    const validGrids = gridState.filter((grid) => typeof grid === "number");
+    const computerTarget = randomInt(validGrids.length);
+    evalTurn(validGrids[computerTarget]);
+  }, [playerTurn]);
+
   function handleClick(e) {
-    const nextGridState = [...gridState];
-    nextGridState[e.target.value] = currentSign;
-    setPlayerTurn(!playerTurn);
-    setGridState(nextGridState);
-    if (checkWin(e.target.value, nextGridState))
-      setGameWinner(playerTurn ? "player" : "computer");
+    evalTurn(e.target.value);
   }
 
-  function computerPlay() {}
+  function evalTurn(value) {
+    const nextGridState = [...gridState];
+    nextGridState[value] = currentSign;
+    setPlayerTurn(!playerTurn);
+    setGridState(nextGridState);
+    if (checkWin(value, nextGridState))
+      setGameWinner(playerTurn ? "player" : "computer");
+  }
 
   function checkWin(value, nextGridState) {
     const possibleConditions = WIN_CONDITIONS.filter((condition) =>

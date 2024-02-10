@@ -6,9 +6,7 @@ import { NUM_OF_GUESSES, WORDS } from "../../utils/constants";
 import { randomInt } from "../../utils/helperFunctions";
 
 function Wordle() {
-  const [answer, setAnswer] = React.useState(
-    WORDS[randomInt(WORDS.length, "floor")]
-  );
+  const [answer, setAnswer] = React.useState(WORDS[randomInt(WORDS.length)]);
   const [guessList, setGuessList] = React.useState([]);
   const [gameStatus, setGameStatus] = React.useState("pending");
 
@@ -51,7 +49,7 @@ function Wordle() {
   }
 
   function resetGame() {
-    setAnswer(WORDS[randomInt(WORDS.length, "floor")]);
+    setAnswer(WORDS[randomInt(WORDS.length)]);
     setGuessList([]);
     setGameStatus("pending");
   }

@@ -21,7 +21,7 @@ function RockPaperScissors() {
   }
 
   function computerPlay() {
-    let int = randomInt(3, "floor");
+    let int = randomInt(3);
     return OPTIONS_ARR[int];
   }
 

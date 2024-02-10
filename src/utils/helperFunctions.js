@@ -1,4 +1,4 @@
-const randomInt = (limit, rounding) => {
+const randomInt = (limit, rounding = "floor") => {
   return Math[rounding](Math.random() * limit);
 };
 
