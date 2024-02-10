@@ -17,11 +17,18 @@ function TicTacToe() {
 
   // Computer Play
   React.useEffect(() => {
-    if (playerTurn) return;
-    const validGrids = gridState.filter((grid) => typeof grid === "number");
-    const computerTarget = randomInt(validGrids.length);
-    evalTurn(validGrids[computerTarget]);
-  }, [playerTurn]);
+    if (playerTurn || gameWinner) return;
+
+    const timeOutId = window.setTimeout(() => {
+      const validGrids = gridState.filter((grid) => typeof grid === "number");
+      const computerTarget = randomInt(validGrids.length);
+      evalTurn(validGrids[computerTarget]);
+    }, "1000");
+
+    return () => {
+      window.clearTimeout(timeOutId);
+    };
+  }, [playerTurn, gameWinner]);
 
   function handleClick(e) {
     evalTurn(e.target.value);
@@ -55,6 +62,9 @@ function TicTacToe() {
 
   return (
     <>
+      <h2 className="text-color font-bold text-lg md:text-2xl text-center">{`It's ${
+        playerTurn ? "Player's " : "Computer's "
+      } turn!`}</h2>
       <div id="board-container" className="grid grid-cols-3 gap-1 p-2">
         {gridState.map((grid, index) => {
           const filledGrid = typeof grid === "string";
@@ -69,7 +79,7 @@ function TicTacToe() {
               value={grid}
               className={`${textColor} bg-white hover:bg-white/10 dark:bg-white/10 hover:dark:bg-white/20 w-full aspect-square rounded-md grid place-content-center min-w-20 text-4xl font-semibold`}
               onClick={handleClick}
-              disabled={filledGrid}
+              disabled={filledGrid || !playerTurn}
             >
               {filledGrid ? grid : ""}
             </button>
