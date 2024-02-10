@@ -15,7 +15,7 @@ function ErrorPage() {
         {error.statusText || error.message}
       </p>
       <Link
-        className="btn-sec-color p-4 border-solid border-2 rounded-lg font-medium"
+        className="bg-slate-200 text-slate-900 border-slate-500 hover:bg-slate-300 dark:bg-slate-800 dark:text-slate-100 dark:border-slate-500 dark:hover:bg-slate-700; p-4 border-solid border-2 rounded-lg font-medium"
         to="/"
       >
         Back to Home

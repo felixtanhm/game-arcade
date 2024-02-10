@@ -58,11 +58,16 @@ function TicTacToe() {
       <div id="board-container" className="grid grid-cols-3 gap-1 p-2">
         {gridState.map((grid, index) => {
           const filledGrid = typeof grid === "string";
+          const textColor = !filledGrid
+            ? ""
+            : grid == "O"
+            ? "text-red-600 dark:text-red-400/80"
+            : "text-gray-900 dark:text-white";
           return (
             <button
               key={index}
               value={grid}
-              className="bg-white text-gray-900 hover:bg-white/10 dark:bg-white/10 dark:text-white hover:dark:bg-white/20 w-full aspect-square rounded-md grid place-content-center min-w-20 text-4xl font-semibold"
+              className={`${textColor} bg-white hover:bg-white/10 dark:bg-white/10 hover:dark:bg-white/20 w-full aspect-square rounded-md grid place-content-center min-w-20 text-4xl font-semibold`}
               onClick={handleClick}
               disabled={filledGrid}
             >
