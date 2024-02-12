@@ -6,6 +6,11 @@ import { WORD_LENGTH } from "../../utils/constants";
 function GuessForm({ updateGuessList }) {
   const [formValue, setFormValue] = React.useState("");
 
+  const inputRef = React.useRef();
+  React.useEffect(() => {
+    inputRef.current.focus();
+  }, []);
+
   function handleSubmit(e) {
     e.preventDefault();
     if (formValue.length !== WORD_LENGTH)
@@ -16,7 +21,11 @@ function GuessForm({ updateGuessList }) {
 
   return (
     <form onSubmit={handleSubmit} className="flex items-end gap-2 p-2">
-      <InputGroup formValue={formValue} onChange={setFormValue} />
+      <InputGroup
+        ref={inputRef}
+        formValue={formValue}
+        onChange={setFormValue}
+      />
       <Button variant="soft" type="submit" customStyles={"h-fit"}>
         Submit
       </Button>
